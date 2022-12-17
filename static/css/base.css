@@ -7,6 +7,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.bg-grey {
+    background-color: #d8d9dd;
+}
+
 /* -----------------------navbar styling------------------------ *
 /* new svg nav */
 
@@ -107,19 +111,50 @@
 }
 
 /* Index */
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+.hero {
+    height: 100vh;
+    position: relative;
 }
 
-.card button {
-    margin: 4px;
-    text-decoration: none;
+.hero-text {
+    position: absolute;
+    bottom: 65%;
+    /* left: 15%; */
 }
 
-.card button a {
-    text-decoration: none;
-    color: black;
+/* https://css-tricks.com/snippets/css/transparent-background-images/ */
+.hero::after {
+    content: "";
+    background-image: url("/media/hero.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.headding {
+    font-family: 'Rubik Distressed', cursive, sans-serif;
+    font-size: clamp(2.8rem, 2.5vw, 2.1rem) !important;
+    color: rgb(19, 69, 131);
+    margin: 50px;
+    text-shadow: 2px 2px rgb(44, 40, 40);
+
+}
+
+/* media styling for screen size mobile  */
+@media (max-width: 991px) {
+    .hero-text {
+        bottom: 45%;
+        /* left: 0; */
+    }
+    .hero::after {
+        background-image: url("/media/hero-2.jpg");
+    }
 }
