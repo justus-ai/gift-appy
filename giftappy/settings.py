@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'profiles',
-
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -81,7 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'giftappy.wsgi.application'
-
+SITE_ID = 1
 AUTHENTICATION_BACKENDS = [
 
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -91,8 +90,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 
 ]
-
-SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
