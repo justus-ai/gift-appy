@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="card">
+        <h1>Gift Appy</h1>
+
+        <h3>Give get happily</h3>
+
+        <img src="https://cdn-icons-png.flaticon.com/512/1180/1180245.png" alt="Giving a gift icon">
+
+        <button type="button" class="btn btn-success"><a href="{% url 'account_login' %}" aria-label="Log in button">LOGIN</a></button>
+
+        <button type="button" class="btn btn-success"><a href="{% url 'account_signup' %}" aria-label="Sign up button">SIGNUP</a></button>
+
+        <button type="button" class="btn btn-success mb-3"><a href="forgot-password.html" aria-label="Forgot password button">FORGOT PASSWORD</a></button>
+    </div>
+</div>
+
+{% endblock %}
