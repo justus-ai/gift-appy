@@ -21,8 +21,22 @@
 <!-- nav-bar -->
 <nav class="navbar fixed-top ">
     {% include 'includes/main_nav.html' %}
-  </nav>
-  <!-- Hero pages -->
-  <!-- footer -->
-  {% include 'includes/footer.html' %}
+</nav>
+<!-- Hero pages -->
+<section class="container-fluid hero m-0 p-0">
+    <div class="row m-0 p-0 ">
+        <div class="col-12 col-md-10 col-lg-8 m-auto hero-div m-0 p-0 ">
+            <div class="hero-text text-center m-0 p-0">
+                {% if request.user.is_authenticated %}
+                <h1 class="headding my-3 mx-0 text-center px-4">welcome {{user.username}}</h1>
+                <p class="px-4">See what your friends are up to or make a wish list!</p>
+                {% else %}
+                <h1 class="headding my-3 mx-0 text-center px-4">We hope you have a safe and relaxing holiday season.</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- footer -->
+{% include 'includes/footer.html' %}
 {% endblock %}
