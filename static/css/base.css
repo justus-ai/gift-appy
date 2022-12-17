@@ -1,3 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Distressed&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* -----------------------navbar styling------------------------ *
+/* new svg nav */
+
+.menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+    z-index: 9999999999;
+}
+
+.offcanvas {
+    height: 100vh !important;
+    /* background: rgb(255, 108, 16);
+  background: linear-gradient(135deg, rgba(255, 108, 16, 1) 0%, rgba(253, 194, 29, 1) 50%, rgba(255, 198, 0, 1) 100%); */
+}
+
+
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+/* -----------offcanvas flex style---------------------- */
+.about-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.profile {
+    height: 200px;
+    width: 200px;
+    background-color: black;
+    border-radius: 100%;
+    box-shadow: 3px 3px 3px #000;
+
+}
+
+.pro-img {
+    width: 100%;
+    border-radius: 100%;
+}
+
+.pro-links {
+    color: black;
+    transition: 400ms;
+}
+
+.pro-links:hover {
+    color: white;
+    transition: 400ms;
+}
+
+/* media styling for screen size mobile  */
+@media (max-width: 991px) {
+    .profile {
+        height: 150px;
+        width: 150px;
+    }
+}
+
 /* Index */
 .card {
     display: flex;
