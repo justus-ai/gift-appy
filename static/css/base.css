@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Distressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo&family=Karla&display=swap');
 
 * {
     padding: 0;
@@ -101,6 +102,46 @@
 .pro-links:hover {
     color: white;
     transition: 400ms;
+}
+
+/* Log In page */ 
+
+.login-header {
+    color: green;
+    font-size: 40px;
+    font-family: 'karla', sans-serif;
+    
+}
+
+.flex-container {
+    background-color: whitesmoke;
+    padding: 50px;
+    margin: 150px;
+    text-align: center;
+
+    background-image: url("/media/hero.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+span {
+    color: red;
+}
+
+.btn-style {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    font-family: 'karla', sans-serif;
+    border: 2px solid green;
 }
 
 /* media styling for screen size mobile  */
