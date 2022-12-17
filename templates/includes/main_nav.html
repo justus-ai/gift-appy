@@ -1,0 +1,138 @@
+<div class="container-fluid d-flex">
+    <!-- ref:  https://css-tricks.com/three-line-menu-navicon/-->
+
+    <button class="menu"
+        onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))"
+        aria-label="Main Menu">
+        <svg width="50" height="50" viewBox="0 0 100 100" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom">
+            <path class="line line1"
+                d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+            <path class="line line2" d="M 20,50 H 80" />
+            <path class="line line3"
+                d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+        </svg>
+    </button>
+    <ul class="nav  d-md-flex list-inline list-unstyled text-center">
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+        <li class="list-inline-item me-2">
+            <a class="text-decoration-none"
+                href="https://8000-samuelukachuk-giftappy1-0j0abvpddzx.ws-eu79.gitpod.io/admin">Management</a>
+        </li>
+        {% endif %}
+
+        <li class="list-inline-item me-2">
+            <p>{{user.username}}</p>
+        </li>
+        {% else %}
+        <li class="list-inline-item me-2">
+            <a class="nav-link fs-bold" href="{% url 'account_signup' %}">Register</a>
+        </li>
+        <li class="list-inline-item me-2">
+            <a class="nav-link fs-bold" href="{% url 'account_login' %}">Login</a>
+        </li>
+        {% endif %}
+    </ul>
+
+    <!------------------------ off canvas menu ---------------------------->
+
+    <div class="offcanvas offcanvas-bottom" id="offcanvasBottom" tabindex="-1" aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header justify-content-center pt-5 mb-2">
+            {% if request.user.is_authenticated %}
+            <h5> <a href="{% url 'account_logout' %}" class="text-decoration-none nav-link fs-bold">Logout</a></h5>
+            {% else %}
+            <h5> <a href="{% url 'account_login' %}" class="text-decoration-none nav-link fs-bold">Login</a></h5>
+            {% endif %}
+        </div>
+        <div class="offcanvas-body pt-5">
+
+            <div class="col-12 col-md-9 col-lg-10 m-auto about-flex">
+                <div class="profile-box">
+                    <div class="profile">
+                        <img src="{{ MEDIA_URL }}" class="pro-img" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view git-hub profile opens in a new tab"><i
+                                class="fa-brands fa-github fs-4 p-2"></i></a>
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view linkdin profile opens in a new tab"><i
+                                class="fa-brands fa-linkedin fs-4 p-2"></i></a>
+                    </div>
+                </div>
+                <div class="profile-box">
+                    <div class="profile">
+                        <img src="{{ MEDIA_URL }}" class="pro-img" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view git-hub profile opens in a new tab"><i
+                                class="fa-brands fa-github fs-4 p-2"></i></a>
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view linkdin profile opens in a new tab"><i
+                                class="fa-brands fa-linkedin fs-4 p-2"></i></a>
+                    </div>
+                </div>
+                <div class="profile-box">
+                    <div class="profile">
+                        <img src="{{ MEDIA_URL }}" class="pro-img" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view git-hub profile opens in a new tab"><i
+                                class="fa-brands fa-github fs-4 p-2"></i></a>
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view linkdin profile opens in a new tab"><i
+                                class="fa-brands fa-linkedin fs-4 p-2"></i></a>
+                    </div>
+                </div>
+                <div class="profile-box">
+                    <div class="profile">
+                        <img src="{{ MEDIA_URL }}" class="pro-img" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view git-hub profile opens in a new tab"><i
+                                class="fa-brands fa-github fs-4 p-2"></i></a>
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view linkdin profile opens in a new tab"><i
+                                class="fa-brands fa-linkedin fs-4 p-2"></i></a>
+                    </div>
+                </div>
+                <div class="profile-box">
+                    <div class="profile">
+                        <img src="{{ MEDIA_URL }}" class="pro-img" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view git-hub profile opens in a new tab"><i
+                                class="fa-brands fa-github fs-4 p-2"></i></a>
+                        <a class="pro-links" href="" target="_blank"
+                            aria-label="view linkdin profile opens in a new tab"><i
+                                class="fa-brands fa-linkedin fs-4 p-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-10 m-auto mt-4 px-4 text-center">
+                <h4><strong>About Us</strong></h4>
+                <div>
+                    <p>"There's only one way to succeed in anything, and that is to give it everything.""</p>
+                    <p>...Vince Lombardi</p>
+                    <P>This is a statement of gratitude to a fantastic development team. We had a plan when we started,
+                        and we were determined to see it through.</P>
+                    <p>...Team</p>
+                    <P>This is a statement of gratitude to a fantastic development team. We had a plan when we started,
+                        and we were determined to see it through.</P>
+                        <p>...Team</p>
+                    <P>This is a statement of gratitude to a fantastic development team. We had a plan when we started,
+                        and we were determined to see it through.</P>
+                        <p>...Team</p>
+                    <P>This is a statement of gratitude to a fantastic development team. We had a plan when we started,
+                        and we were determined to see it through.</P>
+                        <p>...Team</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
