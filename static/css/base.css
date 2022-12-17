@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Distressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo&family=Karla&display=swap');
 
 * {
     padding: 0;
@@ -103,7 +104,6 @@
     transition: 400ms;
 }
 
-/* Sign up page */ 
 /* Log In page */ 
 
 .login-header {
