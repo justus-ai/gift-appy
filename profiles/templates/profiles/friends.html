@@ -13,34 +13,52 @@
         <div class="p-5"></div>
     </div>
     <div class="row">
-        <div class="col">
-            <h1 class="px-5">Hi {{user.username}}</h1>
+        <div class="col-12 col-md-10 m-auto profile-header">
+            <div class="profile-txt text-end">
+                <div class="bg-dark profile-box">
+                    {% if user.userprofile.image %}
+                    <img src="{{ user.userprofile.image.url }}" class="img-fluid rounded-start " alt="User Profile Picture...">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start profile-pic" alt="User Profile Picture...">
+                    {% endif %}
+                </div>
+                <h1 class="">Hi {{user.username}}</h1>
+                <p class="text-end"><span>2 Following</span> <span>3 Followers</span></p>
+            </div>
         </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4  g-4 mt-3">
         <!-- friend cards -->
+        {% for follow in follows %}
         <div class="col">
             <div class="card">
                 <div class="row g-0">
                     <div class="col-4">
-                        <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start" alt="..."
-                            style="width: 100px;">
+                        {% if follow.user.userprofile.image %}
+                        <img src="{{ follow.user.userprofile.image.url }}" class="img-fluid rounded-start" alt="..." style="width: 100px;">
+                        {% else %}
+                        <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start" alt="..." style="width: 100px;">
+                        {% endif %}
                     </div>
                     <div class="col-8 d-flex justify-content-center align-items-center">
                         <div class="">
-                            <p class="card-title"><small class="mb-3"><strong>MaryWippysgdsafhdshfsg</strong></small></p>
-                            <div class="text-center">
+                            <p class="card-title"><small class="mb-3"><strong>{{ follow }}</strong></small>
+                            </p>
+                            <div class="text-center d-flex">
                                 <a class="pe-4" href=""><i class="fas fa-gifts"></i></a>
-                                <!-- <span><small><strong>Follow</strong></small></span> -->
-                                <span><small><strong>UnFollow</strong></small></span>
+                                <a class="pe-4" href=""><i class="fas fa-heart"></i></a>
+                                <a class="pe-4" href=""><i class="fas fa-heart-broken"></i></a>
+                                <!-- <span><small><strong>Follow</strong></small></span>
+                                <span><small><strong>UnFollow</strong></small></span> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        {% endfor %}
     </div>
+
 </section>
 <!-- footer -->
 {% include 'includes/footer.html' %}
