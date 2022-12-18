@@ -202,6 +202,12 @@ span {
     transform: scale(1.02);
 }
 
+/* main_nav developer information css */
+
+#dev-names {
+    font-size: 1em;
+}
+
 /* media styling for screen size mobile  */
 @media (max-width: 991px) {
     .hero-text {
