@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- nav-bar -->
+<nav class="navbar fixed-top ">
+    {% include 'includes/main_nav.html' %}
+</nav>
+
+<!-- main pages -->
+<section class="container">
+    <div class="row">
+        <div class="p-5"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="px-5">Your Wish List</h1>
+        </div>
+    </div>
+    <div class="row">
+
+        {% if wishlist %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-3 mb-5">
+            {% for wish in wishlist %}
+            <div class="col">
+                <div class="card h-100 wish rounded-0 dynamic-card wish-image">
+                    {% if wish.image %}
+                    <a class="p-2" href="#">
+                        <img class="card-img-top" src="{{ wish.image.url }}" alt="{{ wish.name }}">
+                    </a>
+                    {% else %}
+                    <a class="p-2" href="#">
+                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ wish.name }}">
+                    </a>
+                    {% endif %}
+                    <div class="p-3">
+                        <span class="crud">
+                            <a class="text-decoration-none" href="#"><i class="fas fa-edit pe-3"></i></a>
+                            <a class="text-danger text-decoration-none" href="" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop{{wish.id}}"><i class="fas fa-trash-alt"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- delete modal -->
+            <div class="modal fade" id="staticBackdrop{{wish.id}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content rounded-0">
+                        <div class="modal-body text-center">
+                            <p class="m-0"><small>Are You Sure You Want To Delete This Wish?</small></p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn fancy-btn" data-bs-dismiss="modal">Cancel</button>
+                            <a href="#" class="btn btn-danger rounded-0">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end here modal -->
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="row">
+            <h4 class="my-5 text-center">There is currently nothing in your wishlist; create one so that your friends can see it.</h4>
+            <div class="text-center pe-5">
+                <a class="text-decoration-none pe-5 me-5 fs-5" href="">Make A WISH</a>
+            </div>
+            <div class="col-lg-2 col-12 col-md-6">
+                <img src="{{ MEDIA_URL }}make-wishlist.png" alt="" style="width:400px">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+<!-- footer -->
+{% include 'includes/footer.html' %}
+{% endblock %}

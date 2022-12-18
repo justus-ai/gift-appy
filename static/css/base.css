@@ -25,10 +25,10 @@
     z-index: 9999999999;
 }
 
-.offcanvas {
+.offcanvas,body {
     height: 100vh !important;
-    /* background: rgb(255, 108, 16);
-  background: linear-gradient(135deg, rgba(255, 108, 16, 1) 0%, rgba(253, 194, 29, 1) 50%, rgba(255, 198, 0, 1) 100%); */
+    background: rgb(251, 197, 178);
+    background: radial-gradient(circle, rgba(251, 197, 178, 1) 0%, rgba(255, 191, 191, 1) 45%, rgba(255, 235, 235, 1) 100%);
 }
 
 
@@ -104,13 +104,13 @@
     transition: 400ms;
 }
 
-/* Log In page */ 
+/* Log In page */
 
 .login-header {
     color: green;
     font-size: 40px;
     font-family: 'karla', sans-serif;
-    
+
 }
 
 .flex-container {
@@ -118,7 +118,6 @@
     padding: 50px;
     margin: 150px;
     text-align: center;
-
     background-image: url("/media/hero.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -188,6 +187,27 @@ span {
     margin: 50px;
     text-shadow: 2px 2px rgb(44, 40, 40);
 
+}
+/* wish list styling */
+.dynamic-card {
+    box-shadow: 2px 2px 3px #d68669;
+}
+
+.dynamic-card:hover {
+    box-shadow: 2px 3px 4px #d66239;
+}
+
+.wish-image {
+    transition: 1s;
+}
+
+.wish-image:hover {
+    overflow: hidden;
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 /* media styling for screen size mobile  */
