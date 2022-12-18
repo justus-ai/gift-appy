@@ -17,7 +17,7 @@
         {% if request.user.is_superuser %}
         <li class="list-inline-item me-2">
             <a class="text-decoration-none"
-                href="https://8000-samuelukachuk-giftappy1-0j0abvpddzx.ws-eu79.gitpod.io/admin">Management</a>
+                href="https://8000-samuelukachuk-giftappy1-wybp54iy24a.ws-eu79.gitpod.io//admin">Management</a>
         </li>
         {% endif %}
 
@@ -38,11 +38,14 @@
 
     <div class="offcanvas offcanvas-bottom" id="offcanvasBottom" tabindex="-1" aria-labelledby="staticBackdropLabel">
         <div class="offcanvas-header justify-content-center pt-5 mb-2">
+           <div>
+            <h5><a href="{% url 'home' %}" class="text-decoration-none nav-link fs-bold"><i class="fas fa-home"></i> Home</a></h5><br>
             {% if request.user.is_authenticated %}
-            <h5> <a href="{% url 'account_logout' %}" class="text-decoration-none nav-link fs-bold">Logout</a></h5>
+            <h5> <a href="{% url 'account_logout' %}" class="text-decoration-none nav-link fs-bold"><i class="fas fa-sign-out-alt"></i> Logout</a></h5>
             {% else %}
-            <h5> <a href="{% url 'account_login' %}" class="text-decoration-none nav-link fs-bold">Login</a></h5>
+            <h5> <a href="{% url 'account_login' %}" class="text-decoration-none nav-link fs-bold"><i class="fas fa-sign-in-alt"></i> Login</a></h5>
             {% endif %}
+           </div>
         </div>
         <div class="offcanvas-body pt-5">
 
