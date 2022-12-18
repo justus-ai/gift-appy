@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -149,6 +155,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 

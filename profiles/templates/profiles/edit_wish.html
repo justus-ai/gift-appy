@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- nav-bar -->
+<nav class="navbar fixed-top ">
+    {% include 'includes/main_nav.html' %}
+</nav>
+
+<!-- main pages -->
+<section class="container">
+    <div class="row">
+        <div class="p-2"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="p-5">Editing Wish: {{wish.name}}</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4">
+            <div class="card wish rounded-0 dynamic-card wish-image mb-4">
+                {% if wish.image %}
+                <a class="p-2" href="#">
+                    <img class="card-img-top" src="{{ wish.image.url }}" alt="{{ wish.name }}">
+                </a>
+                {% else %}
+                <a class="p-2" href="#">
+                    <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ wish.name }}">
+                </a>
+                {% endif %}
+                <div class="card-body">
+                    <h5>{{wish.name}}</h5>
+                    <p>{{ wish.description }}</p>
+                </div>
+                <div class="p-3 card-footer bg-transparent border-0">
+                    <span class="crud">
+                        <a class="text-decoration-none" href="{% url 'wishlist' %}"><i
+                                class="fas fa-undo"></i></a>
+                    </span>
+                    <span class="ps-2">
+                        {% if wish.done %}
+                        <i class="fas fa-check-circle text-info"></i> <small><strong>Achieved</strong></small>
+                        {% else %}
+                        <i class="fas fa-times-circle"></i> <small><strong>Waiting</strong></small>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-lg-6" >
+            <form class="mb-4" action="{% url 'edit_wish' wish.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    {{ wish_form.name | as_crispy_field }}
+                </div>
+                <div>
+                    {{ wish_form.done | as_crispy_field }}
+                </div>
+                <div>
+                    {{ wish_form.image | as_crispy_field }}
+                </div>
+                <div>
+                    {{ wish_form.link | as_crispy_field }}
+                </div>
+                <div>
+                    {{ wish_form.description | as_crispy_field }}
+                </div>
+
+                <input type="submit" class="btn btn-primary bg-info">
+                <a href="{% url 'wishlist' %}"><i class="fas fa-undo"></i></a>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- footer -->
+{% include 'includes/footer.html' %}
+{% endblock %}

@@ -2,22 +2,6 @@
 {% load static %}
 
 {% block content %}
-
-<!-- <div class="container-fluid">
-    <div class="card">
-        <h1>Gift Appy</h1>
-
-        <h3>Give get happily</h3>
-
-        <img src="https://cdn-icons-png.flaticon.com/512/1180/1180245.png" alt="Giving a gift icon">
-
-        <button type="button" class="btn btn-success"><a href="{% url 'account_login' %}" aria-label="Log in button">LOGIN</a></button>
-
-        <button type="button" class="btn btn-success"><a href="{% url 'account_signup' %}" aria-label="Sign up button">SIGNUP</a></button>
-
-        <button type="button" class="btn btn-success mb-3"><a href="forgot-password.html" aria-label="Forgot password button">FORGOT PASSWORD</a></button>
-    </div>
-</div> -->
 <!-- nav-bar -->
 <nav class="navbar fixed-top ">
     {% include 'includes/main_nav.html' %}
@@ -30,8 +14,19 @@
                 {% if request.user.is_authenticated %}
                 <h1 class="headding my-3 mx-0 text-center px-4">welcome {{user.username}}</h1>
                 <p class="px-4">See what your friends are up to or make a wish list!</p>
+                <div class="text-end px-4">
+                    <a class="fs-1 pe-2" href="{% url 'friends' %}"><span class="border-0" data-bs-toggle="tooltip"
+                            data-bs-placement="left" data-bs-title="View Your Friends List"><i class="fas fa-users"></i></span></a>
+
+                    <a class="fs-1 pe-2" href=""><span class="border-0" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" data-bs-title="Find Friends!"><i class="fas fa-praying-hands"></i></span></a>
+
+                    <a class="fs-1" href="{% url 'wishlist' %}"><span class="border-0" data-bs-toggle="tooltip"
+                            data-bs-placement="right" data-bs-title="View Your Wish List"><i class="fas fa-gifts"></i></span></a>
+                </div>
                 {% else %}
-                <h1 class="headding my-3 mx-0 text-center px-4">We hope you have a safe and relaxing holiday season.</h1>
+                <h1 class="headding my-3 mx-0 text-center px-4">We hope you have a safe and relaxing holiday season.
+                </h1>
                 {% endif %}
             </div>
         </div>
@@ -39,4 +34,12 @@
 </section>
 <!-- footer -->
 {% include 'includes/footer.html' %}
+{% endblock %}
+
+{% block postloadjs %}
+{{block.super}}
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 {% endblock %}
