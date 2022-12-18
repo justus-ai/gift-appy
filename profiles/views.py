@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import Item
+from .models import Item, UserProfile
 from .forms import WishForm
 
 
@@ -9,7 +9,13 @@ from .forms import WishForm
 @login_required
 def friends(request):
     """Renders the friends list page"""
-    context = {}
+    me = get_object_or_404(UserProfile, user=request.user)
+    follows = me.followed_by.all()
+    context = {
+        'me': me,
+        'follows': follows,
+    }
+
     return render(request, 'profiles/friends.html', context)
 
 
