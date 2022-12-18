@@ -11,20 +11,22 @@ class UserProfile(models.Model):
     """User Profile Model"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(
-        max_length=20, null=False, blank=False)
+        max_length=20, null=True, blank=True)
     street_address1 = models.CharField(
-        max_length=80, null=False, blank=False)
+        max_length=80, null=True, blank=True)
     street_address2 = models.CharField(
         max_length=80, null=True, blank=True)
     town_or_city = models.CharField(
-        max_length=40, null=False, blank=False)
+        max_length=40, null=True, blank=True)
     county = models.CharField(
         max_length=80, null=True, blank=True)
     postcode = models.CharField(
-        max_length=20, null=False, blank=False)
+        max_length=20, null=True, blank=True)
     country = CountryField(
-        blank_label='Country', null=False, blank=False)
+        blank_label='Country', null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    follows = models.ManyToManyField("self", related_name="followed_by", symmetrical=False, blank=True)
+    unfollows = models.ManyToManyField("self", related_name="unfollowed_by", symmetrical=False, blank=True)
 
     def __str__(self):
         return self.user.username

@@ -3,12 +3,14 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Item
 from .forms import WishForm
+
+
 # Create your views here.
 @login_required
-def profile(request):
-    """Renders the profile page"""
+def friends(request):
+    """Renders the friends list page"""
     context = {}
-    return render(request, 'profiles/profile.html', context)
+    return render(request, 'profiles/friends.html', context)
 
 
 @login_required
@@ -38,6 +40,7 @@ def wishlist(request):
     return render(request, template_name, context)
 
 
+@login_required
 def edit_wish(request, item_id):
     """ Render the Edit_wish template"""
 
