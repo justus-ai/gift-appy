@@ -26,5 +26,8 @@
    "editor.defaultFormatter": "HookyQR.beautify",
    "githubPullRequests.ignoredPullRequestBranches": [
       "main"
-   ]
+   ],
+   "[django-html]": {
+      "editor.defaultFormatter": "monosans.djlint"
+   }
 }
