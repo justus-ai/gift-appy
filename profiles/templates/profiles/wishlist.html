@@ -15,6 +15,35 @@
     <div class="row">
         <div class="col">
             <h1 class="px-5">Your Wish List</h1>
+            <p class="text-center"><a href="#collapseExample" role="button" class="text-decoration-none"
+                    data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample"><i
+                        class="fas fa-pen-fancy"></i> ADD WISH</a></p>
+
+            <!-- Add items form collapse -->
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <form action="{% url 'wishlist' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            {{ wish_form.name | as_crispy_field }}
+                        </div>
+                        <div>
+                            {{ wish_form.done | as_crispy_field }}
+                        </div>
+                        <div>
+                            {{ wish_form.image | as_crispy_field }}
+                        </div>
+                        <div>
+                            {{ wish_form.link | as_crispy_field }}
+                        </div>
+                        <div>
+                            {{ wish_form.description | as_crispy_field }}
+                        </div>
+
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -33,11 +62,22 @@
                         <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ wish.name }}">
                     </a>
                     {% endif %}
-                    <div class="p-3">
+                    <div class="card-body">
+                        <h5>{{wish.name}}</h5>
+                        <p>{{ wish.description }}</p>
+                    </div>
+                    <div class="p-3 card-footer bg-transparent border-0">
                         <span class="crud">
-                            <a class="text-decoration-none" href="#"><i class="fas fa-edit pe-3"></i></a>
+                            <a class="text-decoration-none" href="{% url 'edit_wish' wish.id %}"><i class="fas fa-edit pe-3"></i></a>
                             <a class="text-danger text-decoration-none" href="" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop{{wish.id}}"><i class="fas fa-trash-alt"></i></a>
+                        </span>
+                        <span class="ps-5">
+                            {% if wish.done %}
+                            <i class="fas fa-check-circle text-info"></i> <small><strong>Achieved</strong></small>
+                            {% else %}
+                            <i class="fas fa-times-circle"></i> <small><strong>Waiting</strong></small>
+                            {% endif %}
                         </span>
                     </div>
                 </div>
@@ -53,17 +93,19 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn fancy-btn" data-bs-dismiss="modal">Cancel</button>
-                            <a href="#" class="btn btn-danger rounded-0">Delete</a>
+                            <a href="{% url 'delete_wish' wish.id %}" class="btn btn-danger rounded-0">Delete</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end here modal -->
+            <!-- end delete modal here -->
+
             {% endfor %}
         </div>
         {% else %}
         <div class="row">
-            <h4 class="my-5 text-center">There is currently nothing in your wishlist; create one so that your friends can see it.</h4>
+            <h4 class="my-5 text-center">There is currently nothing in your wishlist; create one so that your friends
+                can see it.</h4>
             <div class="text-center pe-5">
                 <a class="text-decoration-none pe-5 me-5 fs-5" href="">Make A WISH</a>
             </div>

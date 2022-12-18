@@ -4,5 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.profile, name='profile'),
-    path('wishlist/', views.wishlist, name='wishlist')
+    path('wishlist/', views.wishlist, name='wishlist'),
+    path('edit/<int:item_id>/', views.edit_wish, name='edit_wish'),
+    path('delete/<int:item_id>/', views.delete_wish, name='delete_wish'),
 ]
