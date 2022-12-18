@@ -224,6 +224,13 @@ span {
     position: relative;
 }
 
+
+/* main_nav developer information css */
+
+#dev-names {
+    font-size: 1em;
+}
+
 /* https://css-tricks.com/snippets/css/transparent-background-images/ */
 .profile-header::after {
     content: "";
