@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- nav-bar -->
+<nav class="navbar fixed-top ">
+    {% include 'includes/main_nav.html' %}
+</nav>
+
+<!-- main pages -->
+<section class="container">
+    <div class="row">
+        <div class="p-2"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="p-5">Editing Your Profile: {{user.username}}</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4">
+            <div class="bg-dark profile-box">
+                {% if user.userprofile.image %}
+                <img src="{{ user.userprofile.image.url }}" class="img-fluid rounded-start " alt="User Profile Picture...">
+                {% else %}
+                <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start profile-pic" alt="User Profile Picture...">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-lg-6" >
+            <form class="mb-4" action="#" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    {{ form.phone_number | as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.street_address1 | as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.street_address2 | as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.town_or_city | as_crispy_field }}
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        {{ form.county | as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                        {{ form.postcode | as_crispy_field }}
+                    </div>
+                </div>
+                <div>
+                    {{ form.country | as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.image | as_crispy_field }}
+                </div>
+                <input type="submit" class="btn fancy-btn">
+                <a href="{% url 'friends' %}"><i class="fas fa-undo"></i></a>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- footer -->
+{% include 'includes/footer.html' %}
+{% endblock %}

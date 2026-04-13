@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}WishList{% endblock %}
+
 {% block content %}
 <!-- nav-bar -->
 <nav class="navbar fixed-top ">
@@ -15,10 +17,9 @@
     <div class="row">
         <div class="col">
             <h1 class="px-5">Your Wish List</h1>
-            <p class="text-center"><a href="#collapseExample" role="button" class="text-decoration-none"
+            <p class="fs-5 text-center"><a href="#collapseExample" role="button" class="text-decoration-none"
                     data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample"><i
-                        class="fas fa-pen-fancy"></i> ADD WISH</a></p>
-
+                        class="fas fa-pen-fancy"></i> <strong>ADD WISH</strong></a></p>
             <!-- Add items form collapse -->
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
@@ -40,7 +41,7 @@
                             {{ wish_form.description | as_crispy_field }}
                         </div>
 
-                        <input type="submit" class="btn btn-primary">
+                        <input type="submit" class="btn fancy-btn">
                     </form>
                 </div>
             </div>
@@ -76,7 +77,7 @@
                             {% if wish.done %}
                             <i class="fas fa-check-circle text-info"></i> <small><strong>Achieved</strong></small>
                             {% else %}
-                            <i class="fas fa-times-circle"></i> <small><strong>Waiting</strong></small>
+                            <i class="fas fa-times-circle text-danger"></i> <small><strong>Waiting</strong></small>
                             {% endif %}
                         </span>
                     </div>
@@ -106,9 +107,7 @@
         <div class="row">
             <h4 class="my-5 text-center">There is currently nothing in your wishlist; create one so that your friends
                 can see it.</h4>
-            <div class="text-center pe-5">
-                <a class="text-decoration-none pe-5 me-5 fs-5" href="">Make A WISH</a>
-            </div>
+
             <div class="col-lg-2 col-12 col-md-6">
                 <img src="{{ MEDIA_URL }}make-wishlist.png" alt="" style="width:400px">
             </div>

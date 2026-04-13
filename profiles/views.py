@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 
+from django.views import View
+
+from django.http import HttpResponseRedirect
 from .models import Item, UserProfile
-from .forms import WishForm
+from .forms import WishForm, ProfileForm
 
 
 # Create your views here.
@@ -17,6 +20,28 @@ def friends(request):
     }
 
     return render(request, 'profiles/friends.html', context)
+
+
+@login_required
+def edit_profile(request):
+    """Renders the edit profile page"""
+
+    profile = UserProfile.objects.get(user=request.user)
+
+    form = ProfileForm(
+        request.POST or None,
+        request.FILES or None,
+        instance=profile
+        )
+    if form.is_valid():
+        form.save()
+        return redirect('friends')
+
+    context = {
+        'profile': profile,
+        'form': form
+    }
+    return render(request, 'profiles/edit_profile.html', context)
 
 
 @login_required
@@ -65,6 +90,26 @@ def edit_wish(request, item_id):
         'wish': wish,
     }
     return render(request, template_name, context)
+
+
+class Follows(View):
+    """This view follows and unfollow users"""
+    def post(self, request, follow_id):
+        that_user = get_object_or_404(UserProfile, pk=follow_id)
+        # print("THIS IS:", that_user)
+        # if user.follows.filter(id=request.user.id).exists():
+        #     user.follows.remove(request.user)
+        # else:
+        #     user.follows.add(request.user)
+
+        if that_user.followed_by.filter(user=request.user).exists():
+            print("HEY THIS IS EXISTING", that_user.followed_by.filter(user=request.user).exists())
+            that_user.followed_by.remove(self.request.user)
+        else:
+            that_user.follows.add(request.user)
+
+        return HttpResponseRedirect(reverse('friends'))
+
 
 
 @login_required

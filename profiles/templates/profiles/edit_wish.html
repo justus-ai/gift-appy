@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}Edit Wish{% endblock %}
 {% block content %}
 <!-- nav-bar -->
 <nav class="navbar fixed-top ">
@@ -67,7 +68,7 @@
                     {{ wish_form.description | as_crispy_field }}
                 </div>
 
-                <input type="submit" class="btn btn-primary bg-info">
+                <input type="submit" class="btn fancy-btn">
                 <a href="{% url 'wishlist' %}"><i class="fas fa-undo"></i></a>
             </form>
         </div>
