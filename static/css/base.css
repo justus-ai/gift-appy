@@ -192,6 +192,7 @@
 .hero {
     height: 100vh;
     position: relative;
+    isolation: isolate;
 }
 
 .hero-text {
@@ -249,6 +250,7 @@
 .profile-header{
     height: 40vh;
     position: relative;
+    isolation: isolate;
 }
 
 /* https://css-tricks.com/snippets/css/transparent-background-images/ */
