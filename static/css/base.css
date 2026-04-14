@@ -170,7 +170,7 @@
     padding: 50px;
     margin: 150px;
     text-align: center;
-    background-image: url("/media/hero.jpg");
+    background-image: url("/static/img/hero.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -203,7 +203,7 @@
 /* https://css-tricks.com/snippets/css/transparent-background-images/ */
 .hero::after {
     content: "";
-    background-image: url("/media/hero.jpg");
+    background-image: url("/static/img/hero.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -254,7 +254,7 @@
 /* https://css-tricks.com/snippets/css/transparent-background-images/ */
 .profile-header::after {
     content: "";
-    background-image: url("/media/hero.jpg");
+    background-image: url("/static/img/hero.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -299,7 +299,7 @@
         bottom: 45%;
     }
     .hero::after {
-        background-image: url("/media/hero-2.jpg");
+        background-image: url("/static/img/hero-2.jpg");
     }
     .profile {
         height: 150px;
