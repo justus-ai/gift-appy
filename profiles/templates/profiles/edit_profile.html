@@ -23,7 +23,7 @@
                 {% if user.userprofile.image %}
                 <img src="{{ user.userprofile.image.url }}" class="img-fluid rounded-start " alt="User Profile Picture...">
                 {% else %}
-                <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start profile-pic" alt="User Profile Picture...">
+                <img src="{% static 'img/wolf-clan.jpg' %}" class="img-fluid rounded-start profile-pic" alt="User Profile Picture...">
                 {% endif %}
             </div>
         </div>

@@ -1,3 +1,4 @@
+{% load static %}
 <div class="container-fluid d-flex">
     <!-- ref:  https://css-tricks.com/three-line-menu-navicon/-->
 
@@ -63,7 +64,7 @@
             <div class="col-12 col-md-9 col-lg-10 m-auto pb-3 about-flex">
                 <div>
                     <div class="profile">
-                        <img src="./media/samuel.jpg" class="pro-img" alt="">
+                        <img src="{% static 'img/samuel.jpg' %}" class="pro-img" alt="">
                     </div>
                     <div class="d-flex justify-content-center pt-2">
                         <a class="pro-links" href="https://github.com/SamuelUkachukwu
@@ -82,7 +83,7 @@
                 </div>
                 <div>
                     <div class="profile">
-                        <img src="{{ MEDIA_URL }}/russ.jpg" class="pro-img" alt="">
+                        <img src="{% static 'img/russ.jpg' %}" class="pro-img" alt="">
                     </div>
                     <div class="d-flex justify-content-center pt-2">
                         <a class="pro-links" href="https://github.com/rstan-dev" target="_blank"
@@ -98,7 +99,7 @@
                 </div>
                 <div>
                     <div class="profile">
-                        <img src="{{ MEDIA_URL }}/jack.jpg" class="pro-img" alt="">
+                        <img src="{% static 'img/jack.jpg' %}" class="pro-img" alt="">
                     </div>
                     <div class="d-flex justify-content-center pt-2">
                         <a class="pro-links" href="https://github.com/jackcrosbie" target="_blank"
@@ -114,7 +115,7 @@
                 </div>
                 <div>
                     <div class="profile">
-                        <img src="{{ MEDIA_URL }}/dylan.jpg" class="pro-img" alt="">
+                        <img src="{% static 'img/dylan.jpg' %}" class="pro-img" alt="">
                     </div>
                     <div class="d-flex justify-content-center pt-2">
                         <a class="pro-links" href="" target="_blank"
@@ -130,7 +131,7 @@
                 </div>
                 <div>
                     <div class="profile">
-                        <img src="{{ MEDIA_URL }}/justus.png" class="pro-img" alt="">
+                        <img src="{% static 'img/justus.png' %}" class="pro-img" alt="">
                     </div>
                     <div class="d-flex justify-content-center pt-2">
                         <a class="pro-links" href="https://github.com/justus-ai" target="_blank"

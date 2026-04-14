@@ -22,7 +22,7 @@
                     {% if user.userprofile.image %}
                     <img src="{{ user.userprofile.image.url }}" class="img-fluid rounded-start " alt="User Profile Picture...">
                     {% else %}
-                    <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start profile-pic" alt="User Profile Picture...">
+                    <img src="{% static 'img/wolf-clan.jpg' %}" class="img-fluid rounded-start profile-pic" alt="User Profile Picture...">
                     {% endif %}
                 </div>
                 <h1 class="">welcome {{user.username}}</h1>
@@ -40,7 +40,7 @@
                         {% if follow.user.userprofile.image %}
                         <img src="{{ follow.user.userprofile.image.url }}" class="img-fluid rounded-start" alt="..." style="width: 100px;">
                         {% else %}
-                        <img src="{{ MEDIA_URL }}wolf-clan.jpg" class="img-fluid rounded-start" alt="..." style="width: 100px;">
+                        <img src="{% static 'img/wolf-clan.jpg' %}" class="img-fluid rounded-start" alt="..." style="width: 100px;">
                         {% endif %}
                     </div>
                     <div class="col-8 d-flex justify-content-center align-items-center">
